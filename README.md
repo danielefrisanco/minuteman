@@ -174,4 +174,4 @@ conversion_rate = (invited | from_adsense) & successful_buys
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/elcuervo/minuteman/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+a =Minuteman.new(redis:   Redis.new(:host => "ec2-54-93-59-17.eu-central-1.compute.amazonaws.com"))

@@ -18,6 +18,7 @@ class Minuteman
         attr_reader :cache
 
         def initialize
+          puts "initializeOperationcache "
           @cache = {}
         end
 
@@ -26,6 +27,7 @@ class Minuteman
         #   array: The original data set
         #
         def [](array)
+          puts "[] "
           cache.fetch(array.sort.hash)
         end
 
@@ -35,6 +37,7 @@ class Minuteman
         #   object: The object to be cached
         #
         def []=(array, object)
+          puts "[]="
           cache[array.sort.hash] = object
         end
 
@@ -43,6 +46,9 @@ class Minuteman
         #   array:  The original data set
         #
         def include?(array)
+          puts "include?"
+        puts  cache.keys.counter(array.sort.hash) if array.is_a?(Array)
+            puts "include?"
           cache.keys.include?(array.sort.hash) if array.is_a?(Array)
         end
       end
@@ -64,6 +70,7 @@ class Minuteman
       #   other: The other set to be operated, can be Array or BitOperations
       #
       def call(type, other)
+        puts "operation"
         @other = other
 
         return minus_operation  if type == "MINUS" && operable?
@@ -77,12 +84,14 @@ class Minuteman
       # Private: Executes a minus operation between the sets
       #
       def minus_operation
+        puts "minus"
         timespan ^ (timespan & other)
       end
 
       # Private: Caches any caching capable operation
       #
       def caching
+        puts "caching"
         executed_class = yield
         if other.is_a?(Array) && Minuteman.options[:cache]
           cache[other] = executed_class
@@ -96,6 +105,7 @@ class Minuteman
       #   timespan: The given timespan
       #
       def klass
+        puts "klass"
         case true
         when other.is_a?(String), operable? then Plain
         when other.is_a?(Array) then WithData
@@ -108,6 +118,9 @@ class Minuteman
       #   timespan: The given timespan
       #
       def operable?
+        puts "operable?"
+        puts other.class.ancestors.counter(BitOperations)
+          puts "operable?"
         other.class.ancestors.include?(BitOperations)
       end
     end

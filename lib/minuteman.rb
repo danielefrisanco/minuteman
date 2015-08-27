@@ -29,7 +29,7 @@ class Minuteman
   #   options - An options hash to change how Minuteman behaves
   #
   def initialize(options = {})
-
+    puts "inistialize"
     self.options = default_options.merge!(options)
 
     spans = self.options.fetch(:time_spans, %w[year month week day hour minute])
@@ -39,6 +39,7 @@ class Minuteman
   # Public: Lazily Instantiate and memoize the Redis connection
   #
   def redis
+    puts "redis"
     @redis ||= case options[:redis]
                when nil
                  Redis.new
@@ -62,6 +63,7 @@ class Minuteman
   #   analytics.track("login", [2, 3, 4])
   #
   def track(event_name, ids, time = Time.now.utc)
+      puts "track"
     event_time = time.kind_of?(Time) ? time : Time.parse(time.to_s)
     time_events = TimeEvents.start(@time_spans, event_name, event_time)
 

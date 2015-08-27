@@ -19,6 +19,7 @@ class Minuteman
     #   date       - A given Time object
     #
     def initialize(event_name, date)
+      puts "TimeSpan#{event_name}   #{date}\n\n"
       @key = build_key(event_name, time_format(date))
     end
 

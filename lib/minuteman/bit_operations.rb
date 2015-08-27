@@ -13,8 +13,15 @@ class Minuteman
     #   ids - Array of ids
     #
     def include?(*ids)
+      puts "BitOperation include? \n"
       result = ids.map { |id| getbit(id) }
       result.size == 1 ? result.first : result
+    end
+
+    def counter(*ids)
+      puts "BitOperation counter? \n"
+
+      ids.size
     end
 
     # Public: Resets the current key
@@ -76,6 +83,7 @@ class Minuteman
     #   id: The bit
     #
     def getbit(id)
+      puts "BitOperationsgetbit #{id} #{key}\n"
       safe { redis.getbit(key, id) == 1 }
     end
 
@@ -85,12 +93,14 @@ class Minuteman
     #   timespan: The given timespan
     #
     def operation(type, timespan)
+      puts "BitOperationsoperation #{type} #{timespan}\n"
       operate.call(type, timespan)
     end
 
     # Private: Memoizes the operation class
     #
     def operate
+      puts "BitOperation operate \n"
       @_operate ||= Operation.new(self)
     end
   end

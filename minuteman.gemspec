@@ -3,9 +3,9 @@ Gem::Specification.new do |s|
   s.version           = "1.0.4"
   s.summary           = "Bit Analytics"
   s.description       = "Fast and furious tracking system using Redis bitwise operations"
-  s.authors           = ["elcuervo"]
+  s.authors           = ["elcuervo", "daniele frisanco"]
   s.licenses          = ["MIT", "HUGWARE"]
-  s.email             = ["yo@brunoaguirre.com"]
+  s.email             = ["yo@brunoaguirre.com","daniele.frisanco@gmail.com"]
   s.homepage          = "http://github.com/elcuervo/minuteman"
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files test`.split("\n")

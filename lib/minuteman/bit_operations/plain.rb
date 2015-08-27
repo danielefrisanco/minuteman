@@ -18,6 +18,7 @@ class Minuteman
       def_delegators :Minuteman, :redis, :safe
 
       def call
+        puts "plain#{source_key}"
         events = if source_key == timespan
                    Array(source_key)
                  else
