@@ -15,6 +15,7 @@ class Minuteman
     def include?(*ids)
       puts "BitOperation include? \n"
       result = ids.map { |id| getbit(id) }
+        puts "BitOperation2 include? #{result} \n"
       result.size == 1 ? result.first : result
     end
 
@@ -86,6 +87,8 @@ class Minuteman
       puts "BitOperationsgetbit #{id} #{key}\n"
       safe { redis.getbit(key, id) == 1 }
     end
+
+
 
     # Private: Cxecutes an operation between the current timespan and another
     #

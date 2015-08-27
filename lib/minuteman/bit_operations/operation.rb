@@ -47,8 +47,8 @@ class Minuteman
         #
         def include?(array)
           puts "include?"
-        puts  cache.keys.counter(array.sort.hash) if array.is_a?(Array)
-            puts "include?"
+        # puts   counter(array.sort.hash) if array.is_a?(Array)
+            # puts "include?"
           cache.keys.include?(array.sort.hash) if array.is_a?(Array)
         end
       end
@@ -119,7 +119,7 @@ class Minuteman
       #
       def operable?
         puts "operable?"
-        puts other.class.ancestors.counter(BitOperations)
+        puts  counter(BitOperations)
           puts "operable?"
         other.class.ancestors.include?(BitOperations)
       end
